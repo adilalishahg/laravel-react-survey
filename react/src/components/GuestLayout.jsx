@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { userStateContext } from "../contexts/ContextProvider";
+import { useStateContext } from "../contexts/ContextProvider";
 const GuestLayout = () => {
-    const { userToken } = userStateContext();
+    const { userToken } = useStateContext();
     console.log(userToken);
     if (userToken) return <Navigate to="/" />;
     return (
