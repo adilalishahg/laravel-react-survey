@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, Navigate } from "react-router-dom";
 import { userStateContext } from "../contexts/ContextProvider";
 
 // const user = {
@@ -24,8 +24,8 @@ function logout(ev) {
 }
 
 export default function DefaultLayout() {
-    const { currentUser } = userStateContext();
-    console.log(currentUser);
+    const { currentUser, userToken } = userStateContext();
+    if (!userToken) return <Navigate to="/login" />;
     return (
         <>
             <div className="min-h-full">
